@@ -2,123 +2,476 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>BLOCK UP! プライバシーポリシー / Privacy Policy</title>
+<meta name="description" content="ゲームアプリ「BLOCK UP!」のプライバシーポリシー（取得する情報・利用目的・外部サービス・保存期間・削除の方法・お問い合わせ）">
+<meta name="theme-color" content="#1b2468">
+<link rel="icon" type="image/png" href="https://machipitu.github.io/assets/favicon.png">
+<link rel="apple-touch-icon" href="https://machipitu.github.io/assets/apple-touch-icon.png">
 <style>
-  :root { --bg: #ffffff; --fg: #1d1d1f; --muted: #555; --line: #ddd; --accent: #0a66c2; }
-  @media (prefers-color-scheme: dark) {
-    :root { --bg: #111; --fg: #eee; --muted: #aaa; --line: #333; --accent: #6cb4ff; }
+  :root {
+    --page: #eef2ff;
+    --panel: #ffffff;
+    --text: #1c2240;
+    --muted: #5a6285;
+    --line: #dde2f3;
+    --accent: #2f5bdc;
+    --accent-soft: #e8eeff;
+    --note: #fff7da;
+    --note-line: #f1d77d;
+    --head1: #1b2468;
+    --head2: #5a2d91;
+    color-scheme: light dark;
   }
-  body { margin: 0; background: var(--bg); color: var(--fg); font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif; line-height: 1.75; }
-  main { max-width: 760px; margin: 0 auto; padding: 24px 16px 64px; }
-  h1 { font-size: 1.6rem; margin: 0 0 4px; }
-  h2 { font-size: 1.15rem; margin: 32px 0 8px; padding-top: 16px; border-top: 1px solid var(--line); }
-  h3 { font-size: 1rem; margin: 20px 0 4px; }
-  p, li { font-size: 0.97rem; }
-  .meta { color: var(--muted); font-size: 0.9rem; }
-  a { color: var(--accent); word-break: break-all; }
-  .lang { margin: 8px 0 24px; }
-  hr { border: none; border-top: 2px solid var(--line); margin: 56px 0 24px; }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --page: #0d1230;
+      --panel: #161d45;
+      --text: #eef1ff;
+      --muted: #aab3dc;
+      --line: #2a336a;
+      --accent: #8fb6ff;
+      --accent-soft: #1f2a63;
+      --note: #2b2610;
+      --note-line: #6d5c1d;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 16px; }
+  body {
+    margin: 0; background: var(--page); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", "Segoe UI", sans-serif;
+    line-height: 1.8; -webkit-font-smoothing: antialiased; overflow-wrap: anywhere;
+  }
+  a { color: var(--accent); }
+  /* 言語の切り替え */
+  html:not([lang="en"]) .en, html[lang="en"] .ja { display: none !important; }
+
+  header.brand {
+    background: linear-gradient(135deg, var(--head1), var(--head2)); color: #fff;
+    padding: calc(20px + env(safe-area-inset-top)) 16px 64px;
+  }
+  .brand .inner { max-width: 820px; margin: 0 auto; display: flex; align-items: center; gap: 14px; }
+  .brand img { width: 56px; height: 56px; border-radius: 14px; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3); }
+  .brand .app { font-weight: 800; font-size: 20px; letter-spacing: 0.03em; }
+  .brand .kind { font-size: 13px; opacity: 0.85; }
+  .brand .home { margin-left: auto; color: #fff; font-size: 13px; text-decoration: none; border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 999px; padding: 6px 12px; white-space: nowrap; }
+  .langs { max-width: 820px; margin: 14px auto 0; display: flex; gap: 6px; }
+  .langs button {
+    font: inherit; font-size: 13px; font-weight: 700; color: #fff; background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 999px; padding: 4px 14px; cursor: pointer;
+  }
+  .langs button[aria-pressed="true"] { background: #fff; color: var(--head1); }
+
+  main { max-width: 820px; margin: -44px auto 0; padding: 0 16px calc(48px + env(safe-area-inset-bottom)); }
+  .panel { background: var(--panel); border-radius: 20px; padding: 28px 24px; box-shadow: 0 10px 30px rgba(20, 30, 90, 0.10); }
+  @media (min-width: 700px) { .panel { padding: 40px 48px; } }
+  h1 { font-size: clamp(24px, 4.4vw, 30px); line-height: 1.35; margin: 0 0 6px; }
+  .dates { color: var(--muted); font-size: 14px; margin: 0 0 18px; }
+  .summary { background: var(--accent-soft); border-radius: 14px; padding: 16px 18px; margin: 18px 0 8px; }
+  .summary p { margin: 0 0 6px; font-weight: 700; }
+  .summary ul { margin: 0; padding-left: 1.2em; }
+  .summary li { margin: 2px 0; }
+  nav.toc { border: 1px solid var(--line); border-radius: 14px; padding: 14px 18px; margin: 22px 0 8px; font-size: 15px; }
+  nav.toc p { margin: 0 0 6px; font-weight: 700; }
+  nav.toc ol { margin: 0; padding-left: 1.4em; columns: 2 220px; column-gap: 28px; }
+  nav.toc li { margin: 2px 0; break-inside: avoid; }
+  h2 { font-size: 19px; line-height: 1.45; margin: 40px 0 10px; padding-top: 22px; border-top: 1px solid var(--line); }
+  h3 { font-size: 16px; margin: 22px 0 4px; }
+  p, li, td, th { font-size: 15.5px; }
+  ul, ol { padding-left: 1.3em; }
+  .table { overflow-x: auto; margin: 10px 0; -webkit-overflow-scrolling: touch; }
+  table { width: 100%; border-collapse: collapse; min-width: 560px; }
+  th, td { border: 1px solid var(--line); padding: 9px 11px; text-align: left; vertical-align: top; line-height: 1.6; }
+  th { background: var(--accent-soft); font-size: 14px; }
+  td { font-size: 14.5px; }
+  /* スマホでは表を 1 行ずつのカードにする（見出しは各項目の上に小さく出す） */
+  @media (max-width: 640px) {
+    table { min-width: 0; }
+    thead { display: none; }
+    tr { display: block; border: 1px solid var(--line); border-radius: 12px; margin: 12px 0; overflow: hidden; }
+    td { display: block; border: none; border-top: 1px solid var(--line); padding: 8px 12px; }
+    td:first-child { border-top: none; background: var(--accent-soft); font-weight: 700; }
+    td:not(:first-child)::before { content: attr(data-label); display: block; font-size: 12px; font-weight: 700; color: var(--muted); }
+  }
+  .note { background: var(--note); border: 1px solid var(--note-line); border-radius: 12px; padding: 12px 16px; margin: 12px 0; }
+  .contact { display: inline-block; margin-top: 4px; padding: 10px 16px; border-radius: 12px; background: var(--accent-soft); font-weight: 700; text-decoration: none; }
+  footer { max-width: 820px; margin: 0 auto; padding: 0 16px 40px; color: var(--muted); font-size: 13px; text-align: center; }
+  footer a { color: var(--muted); }
 </style>
 </head>
 <body>
+
+<header class="brand">
+  <div class="inner">
+    <img src="https://machipitu.github.io/assets/icon.webp" alt="" width="56" height="56">
+    <div>
+      <div class="app">BLOCK UP!</div>
+      <div class="kind"><span class="ja">プライバシーポリシー</span><span class="en">Privacy Policy</span></div>
+    </div>
+    <a class="home" href="https://machipitu.github.io/"><span class="ja">ゲームの紹介</span><span class="en">About the game</span></a>
+  </div>
+  <div class="langs" role="group" aria-label="Language">
+    <button type="button" data-lang="ja" aria-pressed="true">日本語</button>
+    <button type="button" data-lang="en" aria-pressed="false">English</button>
+  </div>
+</header>
+
 <main>
-<h1>BLOCK UP! プライバシーポリシー</h1>
-<p class="meta">制定日: 2026年11月20日</p>
-<p class="lang"><a href="#en">English version below</a></p>
+<!-- ======================= 日本語 ======================= -->
+<article class="panel ja" lang="ja">
+  <h1>BLOCK UP! プライバシーポリシー</h1>
+  <p class="dates">制定日：2026年11月20日　／　最終改定日：2026年11月21日</p>
 
-<p>yumam（以下「開発者」）は、スマートフォン向けゲームアプリ「BLOCK UP!」（以下「本アプリ」）における利用者の情報の取り扱いについて、以下のとおり定めます。</p>
+  <p>個人開発者の yumam（以下「開発者」）は、スマートフォン向けゲームアプリ「BLOCK UP!」（以下「本アプリ」）を利用する方（以下「利用者」）の情報を、日本の個人情報保護法をはじめとする各国・地域の法令に沿って、以下のとおり取り扱います。</p>
 
-<h2>1. 取得する情報と利用目的</h2>
+  <div class="summary">
+    <p>かんたんなまとめ</p>
+    <ul>
+      <li>アカウント登録はなく、お名前・住所・電話番号・正確な位置情報などは集めません。</li>
+      <li>記録やコインなどは、基本的にお使いの端末の中だけに保存します。</li>
+      <li>世界ランキング（Unity）・広告（Google AdMob）・アプリ内課金（Apple / Unity）のために、それぞれのサービスに必要な情報が送られます。</li>
+      <li>情報を売ることはありません。IDFA（広告識別子）を使ったトラッキングもしません。</li>
+      <li>ランキングの記録の削除などは、メールでいつでもご依頼いただけます。</li>
+    </ul>
+  </div>
 
-<h3>(1) 端末の中だけに保存する情報</h3>
-<p>スコア・到達した高さなどの記録、コイン、手に入れたスキン、設定（音量など）、ランキングに表示するプレイヤー名は、お使いの端末の中に保存します。ゲームの進行と表示のためだけに使い、下記 (2) のランキングを除いて、開発者のサーバーなどへ送ることはありません。本アプリを削除すると、これらの情報も削除されます。</p>
+  <nav class="toc" aria-label="目次">
+    <p>目次</p>
+    <ol>
+      <li><a href="#ja-operator">運営者</a></li>
+      <li><a href="#ja-collect">取得する情報</a></li>
+      <li><a href="#ja-purpose">利用目的</a></li>
+      <li><a href="#ja-basis">法的根拠（欧州など）</a></li>
+      <li><a href="#ja-thirdparty">外部サービスと第三者提供</a></li>
+      <li><a href="#ja-foreign">外国にある第三者への提供</a></li>
+      <li><a href="#ja-ads">広告と同意の管理</a></li>
+      <li><a href="#ja-retention">保存期間</a></li>
+      <li><a href="#ja-security">安全管理のための措置</a></li>
+      <li><a href="#ja-rights">利用者の権利と請求の方法</a></li>
+      <li><a href="#ja-delete">ランキングの記録を消すには</a></li>
+      <li><a href="#ja-children">お子様の利用</a></li>
+      <li><a href="#ja-us">米国にお住まいの方へ</a></li>
+      <li><a href="#ja-changes">このポリシーの変更</a></li>
+      <li><a href="#ja-contact">お問い合わせ</a></li>
+    </ol>
+  </nav>
 
-<h3>(2) ランキング（Unity Gaming Services）</h3>
-<p>世界ランキングのために、Unity Technologies 社のサービス（Unity Authentication / Unity Leaderboards）を利用します。このとき、自動で発行される匿名のプレイヤー ID、利用者が設定したプレイヤー名、スコアと到達した高さを送信します。プレイヤー名・スコア・高さは、ほかの利用者のランキング画面に表示されます。プレイヤー名には、本名など個人を特定できる情報を使わないでください。</p>
+  <h2 id="ja-operator">1. 運営者</h2>
+  <p>名称：yumam（個人）<br>
+  連絡先：<a href="mailto:blockup.support@gmail.com">blockup.support@gmail.com</a><br>
+  住所：ご請求があれば、遅滞なくお知らせします（上記のメールアドレスまでご連絡ください）。</p>
 
-<h3>(3) 広告（Google AdMob）</h3>
-<p>本アプリは、広告の配信に Google 社の AdMob を利用します。AdMob は、広告の配信・効果の測定・不正の防止のために、端末の情報（機種・OS など）、IP アドレス、広告の表示やタップの記録などを取得することがあります。法令で同意が必要な地域では、Google のしくみ（User Messaging Platform）で同意を確認します。同意の内容は、本アプリの設定画面から変更できる場合があります。</p>
-<p>本アプリは、iOS の広告識別子（IDFA）の利用許可（App Tracking Transparency）を求めていないため、IDFA を使ったトラッキングは行いません。</p>
+  <h2 id="ja-collect">2. 取得する情報</h2>
+  <h3>(1) 端末の中だけに保存する情報</h3>
+  <p>スコア・到達した高さ・自己ベストなどの記録、コイン、手に入れたスキンとアイテム、購入済みの状態、設定（音量・振動など）、ランキングに表示するプレイヤー名、広告の同意の選択は、お使いの端末の中に保存します。下記 (2) のランキングで送る情報を除き、開発者のもとへ送られることはありません。本アプリを削除すると、これらの情報も端末から削除されます（iPhone のバックアップに含まれている場合は、バックアップから復元されることがあります）。</p>
 
-<h3>(4) アプリ内課金（Apple）</h3>
-<p>有料アイテム（広告削除・スキン）の購入と支払いは、Apple 社の App Store を通じて行われます。開発者が、お名前・クレジットカード情報などの支払い情報を受け取ることはありません。本アプリは、購入した商品を使えるようにするために、購入の状態のみを App Store に確認します。</p>
+  <h3>(2) 外部サービスを通じて送られる情報</h3>
+  <div class="table">
+    <table>
+      <thead><tr><th>機能</th><th>送られる情報</th><th>送り先</th></tr></thead>
+      <tbody>
+        <tr><td>世界ランキング</td><td>自動で発行される匿名のプレイヤー ID、利用者が決めたプレイヤー名、スコア、到達した高さ、通信に使う IP アドレス（およその国や地域の推定に使われることがあります）、利用状況や不具合の情報</td><td>Unity Technologies（Unity Authentication・Unity Leaderboards）</td></tr>
+        <tr><td>広告</td><td>端末の識別子（アプリやベンダーごとの ID。IDFA は使いません）、IP アドレスとそこから推定されるおよその位置、端末の情報（機種・OS・言語など）、広告の表示・タップ・動画の再生などの記録、アプリの起動などの操作の記録、クラッシュや動作の速さなどの診断情報、同意の選択</td><td>Google（Google AdMob・User Messaging Platform）</td></tr>
+        <tr><td>アプリ内課金</td><td>購入した商品、取引の情報と購入履歴、端末やユーザーの識別子、利用状況や診断の情報。<strong>お名前・クレジットカード番号などの支払い情報は、開発者にも Unity にも届きません</strong>（支払いは Apple が行います）。</td><td>Apple（App Store）、Unity Technologies（Unity IAP）</td></tr>
+        <tr><td>ゲームエンジン</td><td>端末の種類・OS・性能などの情報（Unity がエンジンの品質向上のために取得することがあります）</td><td>Unity Technologies</td></tr>
+        <tr><td>共有（SHARE）</td><td>利用者が SHARE を押したときだけ、結果画面の画像と文章を、利用者が選んだアプリ（SNS など）へ渡します。共有メニューで「画像を保存」を選んだときは、写真への保存の許可をお願いします（写真の読み取りはしません）。</td><td>利用者が選んだアプリ（開発者には届きません）</td></tr>
+        <tr><td>お問い合わせ</td><td>メールアドレス、お問い合わせの内容（プレイヤー名など、利用者が書いた情報）</td><td>開発者</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-<h3>(5) ゲームエンジン（Unity）</h3>
-<p>本アプリは Unity 社のゲームエンジンで作られています。Unity は、エンジンの改善のために、端末の種類や性能などの匿名の情報を取得する場合があります。</p>
+  <h3>(3) 取得しない情報</h3>
+  <p>お名前（本名）、住所、電話番号、正確な位置情報（GPS）、連絡先（アドレス帳）、写真の読み取り、カメラ、マイク、健康の情報、支払い情報（クレジットカード番号など）は取得しません。</p>
 
-<h3>(6) 共有（SHARE）機能</h3>
-<p>利用者が SHARE ボタンを押したときだけ、結果画面の画像と文章を、利用者が選んだアプリ（SNS など）へ渡します。開発者がその内容を受け取ることはありません。</p>
+  <h2 id="ja-purpose">3. 利用目的</h2>
+  <ol>
+    <li>ゲームの提供（記録・コイン・スキンの保存と表示）</li>
+    <li>世界ランキングの提供（スコアの登録と表示、名前の表示）</li>
+    <li>アプリ内課金の提供（購入した商品を使えるようにする、購入の復元）</li>
+    <li>広告の配信、広告の効果の測定、不正なクリックなどの防止</li>
+    <li>不具合の発見と修正、動作の改善</li>
+    <li>お問い合わせへの対応</li>
+    <li>利用規約や法令に違反する行為（不適切なプレイヤー名など）への対応</li>
+  </ol>
 
-<h2>2. 第三者への提供</h2>
-<p>開発者は、上記 1 のサービスの提供元への送信を除き、利用者の情報を第三者に提供しません。ただし、法令に基づく場合はこの限りではありません。各サービスでの情報の取り扱いは、それぞれのプライバシーポリシーをご確認ください。</p>
-<ul>
-  <li>Google のプライバシーポリシー: <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></li>
-  <li>Google によるパートナーのサイトやアプリからの情報の使用: <a href="https://policies.google.com/technologies/partner-sites">https://policies.google.com/technologies/partner-sites</a></li>
-  <li>Unity のプライバシーポリシー: <a href="https://unity.com/legal/privacy-policy">https://unity.com/legal/privacy-policy</a></li>
-  <li>Apple のプライバシーポリシー: <a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a></li>
-</ul>
+  <h2 id="ja-basis">4. 法的根拠（欧州経済領域・英国・スイスなどにお住まいの方へ）</h2>
+  <ul>
+    <li><strong>契約の履行</strong>：ゲーム・世界ランキング・アプリ内課金の提供</li>
+    <li><strong>正当な利益</strong>：不具合の修正、動作の改善、不正の防止、安全の確保</li>
+    <li><strong>同意</strong>：法令で同意が必要な地域での、パーソナライズされた広告などのための情報の利用（同意はいつでも取り消せます。「7. 広告と同意の管理」をご覧ください）</li>
+  </ul>
+  <p>情報の提供は法令上の義務ではありませんが、世界ランキングの情報を送らない場合は、ランキングを利用できません。自動化された意思決定（プロファイリングを含む）によって、利用者に法的な影響が出ることはありません。</p>
 
-<h2>3. お子様の情報</h2>
-<p>本アプリは、13 歳未満のお子様から意図的に個人情報を取得することはありません。</p>
+  <h2 id="ja-thirdparty">5. 外部サービスと第三者提供</h2>
+  <p>開発者は、利用者の情報を販売しません。次の外部サービスに、上記の目的のために必要な情報が送られます。各社はそれぞれのプライバシーポリシーと利用規約のもとで情報を取り扱い、本ポリシーと同等以上の保護を行うことになっています。</p>
+  <div class="table">
+    <table>
+      <thead><tr><th>提供先</th><th>主な所在国</th><th>目的</th><th>プライバシーポリシー</th></tr></thead>
+      <tbody>
+        <tr><td>Google LLC（AdMob・User Messaging Platform）</td><td>アメリカ合衆国</td><td>広告の配信・効果測定・同意の管理</td><td><a href="https://policies.google.com/privacy">Google プライバシー ポリシー</a><br><a href="https://policies.google.com/technologies/partner-sites">Google のサービスを使うサイトやアプリでの情報の使用</a></td></tr>
+        <tr><td>Unity Technologies（Unity Software Inc. とそのグループ会社）</td><td>アメリカ合衆国 ほか</td><td>世界ランキング・アプリ内課金・ゲームエンジン</td><td><a href="https://unity.com/legal/game-player-and-app-user-privacy-policy">Unity ゲームプレイヤー・アプリ利用者向けプライバシーポリシー</a></td></tr>
+        <tr><td>Apple Inc.</td><td>アメリカ合衆国</td><td>アプリの配信・支払い</td><td><a href="https://www.apple.com/legal/privacy/">Apple のプライバシーポリシー</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>このほか、法令に基づく場合、人の生命・身体・財産の保護のために必要で本人の同意を得ることが難しい場合など、法令で認められる場合には、情報を提供することがあります。</p>
 
-<h2>4. 情報の削除</h2>
-<p>端末に保存した情報は、本アプリを削除すると消えます。ランキングに登録された記録の削除を希望する場合は、下記の連絡先までご連絡ください。</p>
+  <h2 id="ja-foreign">6. 外国にある第三者への提供</h2>
+  <p>上記の外部サービスの提供先は、主にアメリカ合衆国にあり、ほかの国や地域のサーバーで情報が処理されることもあります。外国の個人情報の保護に関する制度は、<a href="https://www.ppc.go.jp/personalinfo/legal/kaiseihogohou/">個人情報保護委員会のウェブサイト</a>（「外国における個人情報の保護に関する制度等の調査」）でご確認いただけます。各社は、それぞれのプライバシーポリシーのとおり、情報の安全管理のための措置と、国をまたいだ移転のための保護措置（標準契約条項など）を講じています。欧州経済領域・英国・スイスなどから情報が移転される場合も、これらの保護措置に基づいて行われます。</p>
 
-<h2>5. このポリシーの変更</h2>
-<p>このポリシーは、必要に応じて変更することがあります。変更した場合は、このページでお知らせします。</p>
+  <h2 id="ja-ads">7. 広告と同意の管理</h2>
+  <ul>
+    <li><strong>同意の確認</strong>：欧州経済領域・英国・スイスなど、法令で同意が必要な地域では、最初の起動時などに、Google の User Messaging Platform で同意をお尋ねします。</li>
+    <li><strong>同意の変更・取り消し</strong>：本アプリの「SETTINGS」→「AD PRIVACY SETTINGS」から、いつでも変更できます（このボタンは、同意が必要な地域でだけ表示されます）。</li>
+    <li><strong>トラッキング</strong>：本アプリは「App Tracking Transparency」による許可を求めないため、IDFA（広告識別子）を使ったトラッキングは行いません。</li>
+    <li><strong>広告のパーソナライズ</strong>：Google による広告のパーソナライズは、<a href="https://myadcenter.google.com/">Google マイ アド センター</a>で管理できます。Google の広告での情報の使い方は、<a href="https://policies.google.com/technologies/ads">Google の広告についてのページ</a>をご覧ください。</li>
+    <li><strong>広告をなくすには</strong>：アプリ内課金の「REMOVE ADS」を購入すると、広告が表示されなくなります。</li>
+  </ul>
 
-<h2>6. お問い合わせ</h2>
-<p>yumam<br>メール: <a href="mailto:blockup.support@gmail.com">blockup.support@gmail.com</a></p>
+  <h2 id="ja-retention">8. 保存期間</h2>
+  <ul>
+    <li>端末の中の情報：本アプリを削除するまで。</li>
+    <li>世界ランキングの情報：ランキングのサービスを終えるまで。削除のご依頼があれば、その時点で削除します。</li>
+    <li>お問い合わせのメール：対応が終わってから 1 年以内に削除します（法令で保存が必要な場合を除きます）。</li>
+    <li>外部サービスの提供先が取得した情報：各社のプライバシーポリシーで定める期間。</li>
+  </ul>
 
-<hr>
+  <h2 id="ja-security">9. 安全管理のための措置</h2>
+  <ul>
+    <li>取得する情報を、ゲームの提供に必要なものだけにしています。</li>
+    <li>外部サービスとの通信は、暗号化された通信（HTTPS）で行われます。</li>
+    <li>ランキングの管理画面などにアクセスできるのは開発者だけです。開発者のアカウントは、2 段階認証などで保護します。</li>
+    <li>外部サービスの提供先は、プライバシーポリシーと安全管理の体制を公開している事業者を選んでいます。</li>
+  </ul>
 
-<h1 id="en">BLOCK UP! Privacy Policy</h1>
-<p class="meta">Effective date: November 20, 2026</p>
+  <h2 id="ja-rights">10. 利用者の権利と請求の方法</h2>
+  <p>利用者は、開発者が取り扱う自分の情報について、<strong>利用目的の通知・開示・訂正・追加・削除・利用の停止・第三者提供の停止</strong>を求めることができます。欧州経済領域・英国・スイスなどにお住まいの方は、<strong>データの持ち運び（ポータビリティ）、処理への異議、処理の制限、同意の取り消し</strong>の権利もあります。</p>
+  <p>ご請求は、「15. お問い合わせ」のメールアドレスまでお送りください。開発者は、プレイヤー名など、利用者が教えてくださる情報でしか、どの記録がご本人のものかを確かめられません。そのため、<strong>プレイヤー名</strong>と、<strong>およそのスコアや最後に遊んだ日</strong>を書き添えてください。原則として 30 日以内にお返事します。手数料はかかりません。</p>
+  <p>取り扱いについての苦情は、開発者にご連絡いただくほか、お住まいの国や地域の監督機関にも申し立てることができます（日本：個人情報保護委員会、英国：Information Commissioner's Office（ICO）、スイス：連邦データ保護・情報委員（FDPIC）など）。</p>
 
-<p>yumam ("the developer") describes below how user information is handled in the mobile game "BLOCK UP!" ("the app").</p>
+  <h2 id="ja-delete">11. ランキングの記録を消すには</h2>
+  <ol>
+    <li>本アプリの「RANKING」画面で、ご自分のプレイヤー名を確認します。</li>
+    <li><a href="mailto:blockup.support@gmail.com?subject=BLOCK%20UP!%20%E3%83%A9%E3%83%B3%E3%82%AD%E3%83%B3%E3%82%B0%E3%81%AE%E8%A8%98%E9%8C%B2%E3%81%AE%E5%89%8A%E9%99%A4">blockup.support@gmail.com</a> に、件名「ランキングの記録の削除」で、プレイヤー名とおよそのスコアを送ってください。</li>
+    <li>開発者が確認し、世界ランキングの記録とプレイヤー名を削除して、メールでお知らせします。</li>
+  </ol>
+  <p class="note">本アプリを削除しても、世界ランキングに登録された記録は消えません。端末の中の記録・コイン・スキンは、本アプリを削除すると消え、元に戻せません（購入した商品は「RESTORE PURCHASES」で戻せます）。</p>
 
-<h2>1. Information we handle and why</h2>
+  <h2 id="ja-children">12. お子様の利用</h2>
+  <p>本アプリは、幅広い年齢の方を対象としたゲームで、13 歳未満のお子様を主な対象としたものではありません。開発者は、13 歳未満のお子様から意図して個人情報を取得することはありません。13 歳未満のお子様の個人情報が取得されていることに気づいた場合は、速やかに削除します。保護者の方は、お子様がアプリ内課金を行う前に、iPhone の「スクリーンタイム」などで購入の管理をされることをおすすめします。</p>
 
-<h3>(1) Information stored only on your device</h3>
-<p>Your records (score, altitude), coins, skins you own, settings (such as volume) and the player name shown in the ranking are stored on your device. They are used only to run and display the game and, except for the ranking described in (2), are not sent to the developer. Deleting the app deletes this information.</p>
+  <h2 id="ja-us">13. 米国にお住まいの方へ</h2>
+  <p>開発者は、利用者の個人情報を金銭と引き換えに販売しません。ただし、広告の配信のために Google に情報が送られることが、一部の州の法律でいう「共有」に当たる場合があります。お住まいの州の法律で認められる権利（情報を知る権利、削除を求める権利、共有の停止を求める権利など）を使いたい場合は、「15. お問い合わせ」までご連絡ください。権利を使ったことを理由に、不利な扱いをすることはありません。</p>
 
-<h3>(2) Ranking (Unity Gaming Services)</h3>
-<p>For the world ranking, the app uses Unity Technologies' services (Unity Authentication and Unity Leaderboards). It sends an automatically issued anonymous player ID, the player name you set, and your score and altitude. Your player name, score and altitude are shown to other players in the ranking. Please do not use your real name or other personally identifiable information as your player name.</p>
+  <h2 id="ja-changes">14. このポリシーの変更</h2>
+  <p>法令の変更や本アプリの機能の追加などに合わせて、このポリシーを変更することがあります。大切な変更をするときは、このページと、必要に応じて本アプリの中でお知らせします。</p>
+  <ul>
+    <li>2026年11月20日：制定</li>
+    <li>2026年11月21日：取得する情報の詳しい説明、法的根拠、外国にある第三者への提供、保存期間、安全管理のための措置、利用者の権利、ランキングの記録の削除の方法、米国にお住まいの方への説明を追加</li>
+  </ul>
 
-<h3>(3) Advertising (Google AdMob)</h3>
-<p>The app uses Google AdMob to show ads. AdMob may collect device information (such as model and OS), IP address, and records of ad views and taps to deliver ads, measure their performance and prevent fraud. Where consent is required by law, consent is obtained through Google's User Messaging Platform, and you may be able to change your choices from the app's settings screen.</p>
-<p>The app does not request permission to use the iOS advertising identifier (App Tracking Transparency), so it does not track you using the IDFA.</p>
+  <h2 id="ja-contact">15. お問い合わせ</h2>
+  <p>本ポリシーや情報の取り扱いについてのご質問・ご請求は、次のメールアドレスまでお送りください。</p>
+  <p>yumam<br><a class="contact" href="mailto:blockup.support@gmail.com">blockup.support@gmail.com</a></p>
+  <p>アプリの使い方などのご質問は、<a href="https://machipitu.github.io/blockup/support/">サポートページ</a>もご覧ください。</p>
+</article>
 
-<h3>(4) In-app purchases (Apple)</h3>
-<p>Purchases of paid items (Remove Ads and skins) are processed by Apple through the App Store. The developer never receives payment information such as your name or credit card details. The app only checks the purchase status with the App Store so that your purchased items can be used.</p>
+<!-- ======================= English ======================= -->
+<article class="panel en" lang="en" id="en">
+  <h1>BLOCK UP! Privacy Policy</h1>
+  <p class="dates">Effective: November 20, 2026　/　Last updated: November 21, 2026</p>
 
-<h3>(5) Game engine (Unity)</h3>
-<p>The app is built with the Unity game engine. Unity may collect anonymous information such as device type and performance to improve the engine.</p>
+  <p>yumam, an independent developer ("the developer", "we"), handles the information of people who use the mobile game "BLOCK UP!" ("the app") as described below, in line with Japan's Act on the Protection of Personal Information and other applicable laws.</p>
 
-<h3>(6) Share feature</h3>
-<p>Only when you tap the SHARE button, the app passes an image of the result screen and a short text to the app you choose (such as a social network). The developer does not receive this content.</p>
+  <div class="summary">
+    <p>Summary</p>
+    <ul>
+      <li>There are no accounts. We do not collect your name, address, phone number or precise location.</li>
+      <li>Your records and coins are mainly stored only on your device.</li>
+      <li>The world ranking (Unity), ads (Google AdMob) and in-app purchases (Apple / Unity) receive the information they need to work.</li>
+      <li>We never sell your information, and we do not track you with the IDFA (advertising identifier).</li>
+      <li>You can ask us by email at any time to delete your ranking record.</li>
+    </ul>
+  </div>
 
-<h2>2. Sharing with third parties</h2>
-<p>Except for sending information to the service providers listed in section 1, the developer does not share user information with third parties, unless required by law. Please see each provider's privacy policy for how they handle information.</p>
-<ul>
-  <li>Google Privacy Policy: <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></li>
-  <li>How Google uses information from sites or apps that use its services: <a href="https://policies.google.com/technologies/partner-sites">https://policies.google.com/technologies/partner-sites</a></li>
-  <li>Unity Privacy Policy: <a href="https://unity.com/legal/privacy-policy">https://unity.com/legal/privacy-policy</a></li>
-  <li>Apple Privacy Policy: <a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a></li>
-</ul>
+  <nav class="toc" aria-label="Contents">
+    <p>Contents</p>
+    <ol>
+      <li><a href="#en-operator">Who we are</a></li>
+      <li><a href="#en-collect">Information we handle</a></li>
+      <li><a href="#en-purpose">Why we use it</a></li>
+      <li><a href="#en-basis">Legal bases (EEA, UK, Switzerland)</a></li>
+      <li><a href="#en-thirdparty">Service providers and sharing</a></li>
+      <li><a href="#en-foreign">International transfers</a></li>
+      <li><a href="#en-ads">Ads and your choices</a></li>
+      <li><a href="#en-retention">How long we keep it</a></li>
+      <li><a href="#en-security">Security</a></li>
+      <li><a href="#en-rights">Your rights</a></li>
+      <li><a href="#en-delete">Deleting your ranking record</a></li>
+      <li><a href="#en-children">Children</a></li>
+      <li><a href="#en-us">US residents</a></li>
+      <li><a href="#en-changes">Changes to this policy</a></li>
+      <li><a href="#en-contact">Contact</a></li>
+    </ol>
+  </nav>
 
-<h2>3. Children</h2>
-<p>The app does not knowingly collect personal information from children under 13.</p>
+  <h2 id="en-operator">1. Who we are</h2>
+  <p>Name: yumam (individual developer, Japan)<br>
+  Contact: <a href="mailto:blockup.support@gmail.com">blockup.support@gmail.com</a><br>
+  Postal address: provided promptly on request (please email us).</p>
 
-<h2>4. Deleting your information</h2>
-<p>Information stored on your device is deleted when you delete the app. To request deletion of your ranking record, please contact us at the address below.</p>
+  <h2 id="en-collect">2. Information we handle</h2>
+  <h3>(1) Information stored only on your device</h3>
+  <p>Your records (score, altitude, personal best), coins, skins and items you own, purchase status, settings (such as volume and vibration), the player name shown in the ranking, and your ad consent choices are stored on your device. Except for the ranking information described in (2), none of this is sent to the developer. Deleting the app deletes this information from your device (it may come back if you restore your iPhone from a backup that contains it).</p>
 
-<h2>5. Changes to this policy</h2>
-<p>This policy may be updated as needed. Any changes will be posted on this page.</p>
+  <h3>(2) Information sent through service providers</h3>
+  <div class="table">
+    <table>
+      <thead><tr><th>Feature</th><th>Information sent</th><th>Sent to</th></tr></thead>
+      <tbody>
+        <tr><td>World ranking</td><td>An automatically issued anonymous player ID, the player name you choose, your score and altitude, the IP address used for the connection (which may be used to estimate your approximate country or region), and usage and error information</td><td>Unity Technologies (Unity Authentication, Unity Leaderboards)</td></tr>
+        <tr><td>Ads</td><td>Device identifiers (app- or vendor-scoped IDs; the IDFA is not used), IP address and the approximate location derived from it, device information (model, OS, language, etc.), records of ad views, taps and video plays, records of app interactions such as launches, diagnostics such as crashes and performance, and your consent choices</td><td>Google (Google AdMob, User Messaging Platform)</td></tr>
+        <tr><td>In-app purchases</td><td>The products you buy, transaction details and purchase history, device and user identifiers, and usage and diagnostic information. <strong>Your name and payment details such as card numbers never reach the developer or Unity</strong> (Apple processes the payment).</td><td>Apple (App Store), Unity Technologies (Unity IAP)</td></tr>
+        <tr><td>Game engine</td><td>Device type, OS and performance information (Unity may collect this to improve the engine)</td><td>Unity Technologies</td></tr>
+        <tr><td>Share</td><td>Only when you tap SHARE, the result image and a short text are passed to the app you choose (such as a social network). If you choose "Save Image" in the share menu, iOS asks for permission to add the image to Photos (the app never reads your photos).</td><td>The app you choose (not the developer)</td></tr>
+        <tr><td>Contacting us</td><td>Your email address and the content of your message (such as your player name)</td><td>The developer</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-<h2>6. Contact</h2>
-<p>yumam<br>Email: <a href="mailto:blockup.support@gmail.com">blockup.support@gmail.com</a></p>
+  <h3>(3) Information we do not collect</h3>
+  <p>We do not collect your real name, postal address, phone number, precise (GPS) location, contacts, photos (we never read them), camera, microphone, health information, or payment details such as card numbers.</p>
+
+  <h2 id="en-purpose">3. Why we use it</h2>
+  <ol>
+    <li>To provide the game (saving and showing records, coins and skins)</li>
+    <li>To provide the world ranking (registering and showing scores and names)</li>
+    <li>To provide in-app purchases (unlocking and restoring purchased items)</li>
+    <li>To show ads, measure their performance and prevent fraud such as invalid clicks</li>
+    <li>To find and fix bugs and improve performance</li>
+    <li>To respond to your inquiries</li>
+    <li>To deal with violations of the law or the rules of the game (such as inappropriate player names)</li>
+  </ol>
+
+  <h2 id="en-basis">4. Legal bases (for users in the EEA, the UK and Switzerland)</h2>
+  <ul>
+    <li><strong>Performance of a contract</strong>: providing the game, the world ranking and in-app purchases</li>
+    <li><strong>Legitimate interests</strong>: fixing bugs, improving performance, preventing fraud and keeping the service secure</li>
+    <li><strong>Consent</strong>: using information for personalised ads and similar purposes where the law requires consent (you can withdraw it at any time; see "7. Ads and your choices")</li>
+  </ul>
+  <p>Providing information is not a legal requirement, but the world ranking cannot be used without sending the ranking information. We do not make decisions based solely on automated processing (including profiling) that produce legal or similarly significant effects on you.</p>
+
+  <h2 id="en-thirdparty">5. Service providers and sharing</h2>
+  <p>We do not sell your information. The service providers below receive the information they need for the purposes above. Each provider handles information under its own privacy policy and terms and is expected to protect it at a level the same as or higher than this policy.</p>
+  <div class="table">
+    <table>
+      <thead><tr><th>Provider</th><th>Main location</th><th>Purpose</th><th>Privacy policy</th></tr></thead>
+      <tbody>
+        <tr><td>Google LLC (AdMob, User Messaging Platform)</td><td>United States</td><td>Ads, ad measurement and consent management</td><td><a href="https://policies.google.com/privacy">Google Privacy Policy</a><br><a href="https://policies.google.com/technologies/partner-sites">How Google uses information from sites or apps that use its services</a></td></tr>
+        <tr><td>Unity Technologies (Unity Software Inc. and its affiliates)</td><td>United States and others</td><td>World ranking, in-app purchases and the game engine</td><td><a href="https://unity.com/legal/game-player-and-app-user-privacy-policy">Unity Game Player and App User Privacy Policy</a></td></tr>
+        <tr><td>Apple Inc.</td><td>United States</td><td>App distribution and payments</td><td><a href="https://www.apple.com/legal/privacy/">Apple Privacy Policy</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>We may also disclose information where required or permitted by law, for example to protect someone's life, body or property when it is difficult to obtain consent.</p>
+
+  <h2 id="en-foreign">6. International transfers</h2>
+  <p>The service providers are mainly located in the United States, and information may also be processed on servers in other countries. Information about data protection systems in other countries is available on the website of Japan's <a href="https://www.ppc.go.jp/personalinfo/legal/kaiseihogohou/">Personal Information Protection Commission</a>. As described in their privacy policies, each provider takes security measures and uses safeguards for international transfers (such as Standard Contractual Clauses). Transfers from the EEA, the UK and Switzerland are also made under these safeguards.</p>
+
+  <h2 id="en-ads">7. Ads and your choices</h2>
+  <ul>
+    <li><strong>Consent</strong>: In regions where the law requires consent, such as the EEA, the UK and Switzerland, the app asks for your consent through Google's User Messaging Platform (for example, when you first open the app).</li>
+    <li><strong>Changing or withdrawing consent</strong>: You can change your choices at any time from SETTINGS → AD PRIVACY SETTINGS in the app (this button appears only in regions where consent is required).</li>
+    <li><strong>Tracking</strong>: The app does not ask for permission through App Tracking Transparency, so it does not track you using the IDFA (advertising identifier).</li>
+    <li><strong>Ad personalisation</strong>: You can manage ad personalisation by Google in <a href="https://myadcenter.google.com/">My Ad Center</a>. See <a href="https://policies.google.com/technologies/ads">how Google uses information in advertising</a>.</li>
+    <li><strong>Removing ads</strong>: Buying "REMOVE ADS" in the app stops ads from being shown.</li>
+  </ul>
+
+  <h2 id="en-retention">8. How long we keep it</h2>
+  <ul>
+    <li>Information on your device: until you delete the app.</li>
+    <li>World ranking information: until the ranking service ends, or until you ask us to delete it.</li>
+    <li>Emails you send us: deleted within one year after we finish handling your request, unless the law requires us to keep them.</li>
+    <li>Information collected by service providers: for the periods set out in their privacy policies.</li>
+  </ul>
+
+  <h2 id="en-security">9. Security</h2>
+  <ul>
+    <li>We limit the information handled to what is needed to provide the game.</li>
+    <li>Communication with service providers is encrypted (HTTPS).</li>
+    <li>Only the developer can access the ranking dashboard and related accounts, and these accounts are protected with measures such as two-step verification.</li>
+    <li>We use service providers that publish their privacy policies and security practices.</li>
+  </ul>
+
+  <h2 id="en-rights">10. Your rights</h2>
+  <p>You can ask us to tell you how your information is used, and to <strong>access, correct, add to or delete</strong> it, or to <strong>stop using or sharing</strong> it. If you live in the EEA, the UK or Switzerland, you also have the rights to <strong>data portability, to object to processing, to restrict processing and to withdraw your consent</strong>.</p>
+  <p>Please send your request to the email address in "15. Contact". We can only find your records from the information you give us, so please include your <strong>player name</strong> and your <strong>approximate score or the date you last played</strong>. We will usually reply within 30 days, free of charge.</p>
+  <p>You can also lodge a complaint with your local data protection authority, for example the Information Commissioner's Office (ICO) in the UK, the Federal Data Protection and Information Commissioner (FDPIC) in Switzerland, or the Personal Information Protection Commission in Japan.</p>
+
+  <h2 id="en-delete">11. Deleting your ranking record</h2>
+  <ol>
+    <li>Check your player name on the RANKING screen in the app.</li>
+    <li>Email <a href="mailto:blockup.support@gmail.com?subject=BLOCK%20UP!%20Ranking%20deletion%20request">blockup.support@gmail.com</a> with the subject "Ranking deletion request", including your player name and your approximate score.</li>
+    <li>We will confirm and delete your world ranking record and player name, and let you know by email.</li>
+  </ol>
+  <p class="note">Deleting the app does not delete your world ranking record. Records, coins and skins stored on your device are lost when you delete the app and cannot be recovered (purchased items can be restored with RESTORE PURCHASES).</p>
+
+  <h2 id="en-children">12. Children</h2>
+  <p>The app is a game for a general audience and is not primarily directed to children under 13. We do not knowingly collect personal information from children under 13, and if we learn that we have, we will delete it promptly. We recommend that parents use features such as Screen Time on iPhone to manage purchases before children make in-app purchases.</p>
+
+  <h2 id="en-us">13. US residents</h2>
+  <p>We do not sell your personal information for money. However, sending information to Google to show ads may count as "sharing" under some state laws. If you want to use the rights your state's law gives you (such as the right to know, to delete, or to opt out of sharing), please contact us using "15. Contact". We will not treat you differently for using these rights.</p>
+
+  <h2 id="en-changes">14. Changes to this policy</h2>
+  <p>We may update this policy when laws change or the app gets new features. For important changes, we will post a notice on this page and, where appropriate, in the app.</p>
+  <ul>
+    <li>November 20, 2026: first published</li>
+    <li>November 21, 2026: added details of the information handled, legal bases, international transfers, retention, security, your rights, how to delete your ranking record, and a section for US residents</li>
+  </ul>
+
+  <h2 id="en-contact">15. Contact</h2>
+  <p>For questions or requests about this policy or your information, please email:</p>
+  <p>yumam<br><a class="contact" href="mailto:blockup.support@gmail.com">blockup.support@gmail.com</a></p>
+  <p>For help with the app, see the <a href="https://machipitu.github.io/blockup/support/">support page</a>.</p>
+</article>
 </main>
+
+<footer>
+  &copy; 2026 yumam ・ <a href="https://machipitu.github.io/">BLOCK UP!</a> ・ <a href="https://machipitu.github.io/blockup/support/"><span class="ja">サポート</span><span class="en">Support</span></a>
+</footer>
+
+<script>
+  (function () {
+    // 表の各セルに見出しの名前を付ける（スマホでカード表示にしたときに使う）
+    document.querySelectorAll("table").forEach(function (t) {
+      var heads = Array.prototype.map.call(t.querySelectorAll("thead th"), function (th) { return th.textContent; });
+      t.querySelectorAll("tbody tr").forEach(function (tr) {
+        Array.prototype.forEach.call(tr.children, function (td, i) { if (heads[i]) td.setAttribute("data-label", heads[i]); });
+      });
+    });
+    var buttons = document.querySelectorAll(".langs button");
+    function setLang(lang, fromUser) {
+      document.documentElement.lang = lang;
+      buttons.forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.lang === lang ? "true" : "false"); });
+      if (fromUser) { try { localStorage.setItem("lang", lang); } catch (e) {} }
+    }
+    // 「#en」や「#en-…」で開いたときは英語。それ以外は保存した言語 → 端末の言語
+    var hash = location.hash || "";
+    var saved = null;
+    try { saved = localStorage.getItem("lang"); } catch (e) {}
+    var nav = (navigator.language || "ja").toLowerCase();
+    var lang = /^#en(\b|-)/.test(hash) ? "en" : /^#ja-/.test(hash) ? "ja" : (saved || (nav.indexOf("ja") === 0 ? "ja" : "en"));
+    setLang(lang, false);
+    // 言語を切り替えたあとで、リンク先の項目まで移動し直す（最初は隠れていて移動できないため）
+    if (hash.length > 1) {
+      var target = document.getElementById(decodeURIComponent(hash.slice(1)));
+      if (target) setTimeout(function () { target.scrollIntoView(); }, 0);
+    }
+    buttons.forEach(function (b) {
+      b.addEventListener("click", function () { setLang(b.dataset.lang, true); window.scrollTo(0, 0); });
+    });
+  })();
+</script>
 </body>
 </html>
